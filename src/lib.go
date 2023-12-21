@@ -12,7 +12,10 @@ import (
 // Debug Body
 func DebugBody(body *Body) {
 	raylib.DrawText(
-		fmt.Sprintf(`Vel_X: %f | Vel_Y: %f`, body.Vel.X, body.Vel.Y), 10, 30, 25, raylib.DarkGreen,
+		fmt.Sprintf(`Vel_X: %f | Vel_Y: %f`, body.Vel.X, body.Vel.Y), 10, 40, 25, raylib.DarkGray,
+	)
+	raylib.DrawText(
+		fmt.Sprintf(`Angle: %f`, body.RotationAngle), 10, 70, 25, raylib.DarkGray,
 	)
 }
 
