@@ -1,17 +1,15 @@
 package src
 
+// Important functions and extensions of raylib-go
+
 import (
-	"fmt"
 	"math"
 
 	raylib "github.com/gen2brain/raylib-go/raylib"
 )
 
+// Drawing Rotatable Rectangle
 func DrawRotationalRect(location *Vector, width, height, angle float64) {
-	raylib.DrawText(fmt.Sprint(location), 10.0, 30.0, 20.0, raylib.Black)
-	raylib.DrawText(fmt.Sprint(width), 10.0, 50.0, 20.0, raylib.Black)
-	raylib.DrawText(fmt.Sprint(height), 40.0, 50.0, 20.0, raylib.Black)
-	raylib.DrawText(fmt.Sprint(angle), 10.0, 70.0, 20.0, raylib.Black)
 	radius := math.Sqrt(width*width+height*height) / 2
 
 	var Points [4]Vector
