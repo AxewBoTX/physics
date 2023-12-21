@@ -1,5 +1,7 @@
 package src
 
+// Gravitational Attractor Class
+
 import (
 	"math"
 
