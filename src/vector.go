@@ -1,5 +1,7 @@
 package src
 
+// Vector Class and functions
+
 import (
 	"math"
 )
