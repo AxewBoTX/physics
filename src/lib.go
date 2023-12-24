@@ -15,15 +15,16 @@ func DebugBody(body *Body) {
 		fmt.Sprintf(`Vel_X: %f | Vel_Y: %f`, body.Vel.X, body.Vel.Y), 10, 40, 25, raylib.DarkGray,
 	)
 	raylib.DrawText(
-		fmt.Sprintf(`Angle: %f`, body.RotationAngle), 10, 70, 25, raylib.DarkGray,
+		fmt.Sprintf(`body.Angle: %f`, body.Angle), 10, 70, 25, raylib.DarkGray,
 	)
 }
 
 // Drawing Rotatable Line
-func DrawRotationalLine(location *Vector, length, angle float64) {
+func DrawRotationalLine(body *Body) {
 	var Points [2]Vector
-	Points[0] = *NewVector(location.X+length*math.Cos(angle), location.Y-length*math.Sin(angle))
-	Points[1] = *NewVector(location.X-length*math.Cos(angle), location.Y+length*math.Sin(angle))
+	length := body.Mass * 4
+	Points[0] = *NewVector(body.Location.X+length*math.Cos(body.Angle), body.Location.Y-length*math.Sin(body.Angle))
+	Points[1] = *NewVector(body.Location.X-length*math.Cos(body.Angle), body.Location.Y+length*math.Sin(body.Angle))
 	raylib.DrawLine(
 		int32(
 			Points[0].X,
@@ -35,26 +36,26 @@ func DrawRotationalLine(location *Vector, length, angle float64) {
 	)
 }
 
-// Drawing Rotatable Rectangle
-func DrawRotationalRect(location *Vector, width, height, angle float64) {
-	radius := math.Sqrt(width*width+height*height) / 2
+// Drawing Rotatable Square
+func DrawRotationalSquare(body *Body) {
+	radius := math.Sqrt(32*body.Mass*body.Mass) / 2
 
 	var Points [4]Vector
 	Points[0] = *NewVector( // Top Left
-		location.X-(radius*math.Sin(angle+math.Pi/4)),
-		location.Y-(radius*math.Cos(angle+math.Pi/4)),
+		body.Location.X-(radius*math.Sin(body.Angle+math.Pi/4)),
+		body.Location.Y-(radius*math.Cos(body.Angle+math.Pi/4)),
 	)
 	Points[1] = *NewVector( // Top Right
-		location.X+(radius*math.Cos(angle+math.Pi/4)),
-		location.Y-(radius*math.Sin(angle+math.Pi/4)),
+		body.Location.X+(radius*math.Cos(body.Angle+math.Pi/4)),
+		body.Location.Y-(radius*math.Sin(body.Angle+math.Pi/4)),
 	)
 	Points[2] = *NewVector( // Bottom Right
-		location.X+(radius*math.Sin(angle+math.Pi/4)),
-		location.Y+(radius*math.Cos(angle+math.Pi/4)),
+		body.Location.X+(radius*math.Sin(body.Angle+math.Pi/4)),
+		body.Location.Y+(radius*math.Cos(body.Angle+math.Pi/4)),
 	)
 	Points[3] = *NewVector( // Bottom Left
-		location.X-(radius*math.Cos(angle+math.Pi/4)),
-		location.Y+(radius*math.Sin(angle+math.Pi/4)),
+		body.Location.X-(radius*math.Cos(body.Angle+math.Pi/4)),
+		body.Location.Y+(radius*math.Sin(body.Angle+math.Pi/4)),
 	)
 
 	raylib.DrawLine( //Top
