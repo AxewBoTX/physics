@@ -5,9 +5,13 @@ int main(void) {
   const int HEIGHT = 700;
   InitWindow(WIDTH, HEIGHT, "nature of code");
 
+  const int FPS = 60;
+  SetTargetFPS(FPS);
+
   while (!WindowShouldClose() && !IsKeyPressed(KEY_Q)) {
     BeginDrawing();
-    ClearBackground(RAYWHITE);
+    ClearBackground(BLACK);
+    DrawFPS(10, 10);
 
     // Actual Code
 
