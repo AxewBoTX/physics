@@ -1,3 +1,3 @@
 # Physics
 
-Minimal physics engine written in GoLang, based on [raylib-go](https://github.com/gen2brain/raylib-go).
+Minimal physics engine written in C++, based on [raylib](https://github.com/raysan5/raylib).
