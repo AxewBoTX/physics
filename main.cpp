@@ -1,31 +1,38 @@
-// #include "lib/raylib/raylib.h"
+#include "lib/raylib/raylib.h"
 #include "src/src.h"
-#include <iostream>
 
 int main(void) {
-  // const int WIDTH = 1200;
-  // const int HEIGHT = 700;
-  // InitWindow(WIDTH, HEIGHT, "nature of code");
-  //
-  // const int FPS = 60;
-  // SetTargetFPS(FPS);
-  //
-  // while (!WindowShouldClose() && !IsKeyPressed(KEY_Q)) {
-  //   BeginDrawing();
-  //   ClearBackground(BLACK);
-  //   DrawFPS(10, 10);
-  //
-  //   // Actual Code
-  //
-  //   EndDrawing();
-  // }
-  //
-  // CloseWindow();
-  Vector location(10, 10);
-  Vector new_loc = location.get();
-  new_loc.add(location).multi(10);
-  std::cout << "location_x:" << location.x << " location_y:" << location.y
-            << std::endl;
-  std::cout << "new_x:" << new_loc.x << " new_y:" << new_loc.y << std::endl;
+  // Basic raylib setup
+  const double WIDTH = 1200;
+  const double HEIGHT = 700;
+  const int FPS = 60;
+  InitWindow(WIDTH, HEIGHT, "nature of code");
+  SetTargetFPS(FPS);
+
+  // Engine stuff
+  World world;
+  for (int i = 0; i < 1; i++) {
+    Body body = Body(WIDTH / 2, HEIGHT / 2, 8, 0);
+    world.add_body(body);
+  }
+
+  while (!WindowShouldClose() && !IsKeyPressed(KEY_Q)) {
+    BeginDrawing();
+    ClearBackground(BLACK);
+    DrawFPS(10, 10);
+
+    // Actual Code
+    for (int i = 0; i < world.bodies.size(); i++) {
+      DrawCircle(world.bodies[i].location.x, world.bodies[i].location.y,
+                 world.bodies[i].mass * 4, RAYWHITE);
+      world.bodies[i].update();
+      debug_body(world.bodies[i]);
+    }
+    world.generate_friction();
+
+    EndDrawing();
+  }
+
+  CloseWindow();
   return 0;
 }
