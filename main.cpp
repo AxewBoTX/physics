@@ -23,9 +23,9 @@ int main(void) {
 
     // Actual Code
     for (int i = 0; i < world.bodies.size(); i++) {
-      // DrawCircle(world.bodies[i].location.x, world.bodies[i].location.y,
-      //            world.bodies[i].mass * 4, RAYWHITE);
-      DrawRotationalLine(world.bodies[i]);
+      DrawCircle(world.bodies[i].location.x, world.bodies[i].location.y,
+                 world.bodies[i].mass * 1.5, RAYWHITE);
+      // DrawRotationalLine(world.bodies[i]);
       world.bodies[i].update();
       world.bodies[i].vel_direction();
       debug_body(world.bodies[i]);
