@@ -12,7 +12,7 @@ int main(void) {
   // Engine stuff
   World world;
   for (int i = 0; i < 1; i++) {
-    Body body = Body(WIDTH / 2, HEIGHT / 2, 8, 0);
+    Body body = Body(WIDTH / 2, HEIGHT / 2, 15, 0);
     world.add_body(body);
   }
 
@@ -23,9 +23,11 @@ int main(void) {
 
     // Actual Code
     for (int i = 0; i < world.bodies.size(); i++) {
-      DrawCircle(world.bodies[i].location.x, world.bodies[i].location.y,
-                 world.bodies[i].mass * 4, RAYWHITE);
+      // DrawCircle(world.bodies[i].location.x, world.bodies[i].location.y,
+      //            world.bodies[i].mass * 4, RAYWHITE);
+      DrawRotationalLine(world.bodies[i]);
       world.bodies[i].update();
+      world.bodies[i].vel_direction();
       debug_body(world.bodies[i]);
     }
     world.generate_friction();

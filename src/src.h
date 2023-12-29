@@ -9,7 +9,7 @@ public:
   double x;
   double y;
 
-  Vector(double _x, double _y);
+  Vector(double _x = 0, double _y = 0);
 
   double mag();
   Vector get();
@@ -52,5 +52,6 @@ public:
 
 // Important functions and raylib addons
 void debug_body(Body &body);
+void DrawRotationalLine(Body &body);
 
 #endif

@@ -32,9 +32,9 @@ void Body::apply_force(Vector &force) {
 
 // Show velocity directions
 void Body::vel_direction() {
-  Vector vel_vec = Vector::Vector_div(this->vel, 10);
+  Vector vel_vec = Vector::Vector_multi(this->vel, 8);
   Vector vel_dir = Vector::AddVectors(this->location, vel_vec);
-  DrawLine(this->location.x, this->location.y, vel_dir.x, vel_dir.y, RAYWHITE);
+  DrawLine(this->location.x, this->location.y, vel_dir.x, vel_dir.y, RED);
 }
 
 // Handle keyboard input
