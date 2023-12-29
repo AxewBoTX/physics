@@ -20,7 +20,7 @@ void debug_body(Body &body) {
   DrawText(angle_text, 10, 80, 20, RAYWHITE);
 }
 
-// Draw rotational line
+// Drawing rotational line
 void DrawRotationalLine(Body &body) {
   Vector points[2];
   points[0] = Vector(body.location.x + body.mass * std::cos(body.angle),
@@ -28,4 +28,34 @@ void DrawRotationalLine(Body &body) {
   points[1] = Vector(body.location.x - body.mass * std::cos(body.angle),
                      body.location.y + body.mass * std::sin(body.angle));
   DrawLine(points[1].x, points[1].y, points[0].x, points[0].y, RAYWHITE);
+}
+
+// Drawing rotational square
+void DrawRotationalSquare(Body &body) {
+  Vector points[4];
+  // Top Left
+  points[0] =
+      Vector(body.location.x - body.mass * std::sin(body.angle + M_PI / 4),
+             body.location.y - body.mass * std::cos(body.angle + M_PI / 4));
+  // Top Right
+  points[1] =
+      Vector(body.location.x + body.mass * std::cos(body.angle + M_PI / 4),
+             body.location.y - body.mass * std::sin(body.angle + M_PI / 4));
+  // Bottom Right
+  points[2] =
+      Vector(body.location.x + body.mass * std::sin(body.angle + M_PI / 4),
+             body.location.y + body.mass * std::cos(body.angle + M_PI / 4));
+  // Bottom Right
+  points[3] =
+      Vector(body.location.x - body.mass * std::cos(body.angle + M_PI / 4),
+             body.location.y + body.mass * std::sin(body.angle + M_PI / 4));
+
+  // Top
+  DrawLine(points[0].x, points[0].y, points[1].x, points[1].y, RAYWHITE);
+  // Right
+  DrawLine(points[1].x, points[1].y, points[2].x, points[2].y, RAYWHITE);
+  // Bottom
+  DrawLine(points[2].x, points[2].y, points[3].x, points[3].y, RAYWHITE);
+  // Left
+  DrawLine(points[3].x, points[3].y, points[0].x, points[0].y, RAYWHITE);
 }

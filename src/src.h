@@ -53,5 +53,6 @@ public:
 // Important functions and raylib addons
 void debug_body(Body &body);
 void DrawRotationalLine(Body &body);
+void DrawRotationalSquare(Body &body);
 
 #endif
