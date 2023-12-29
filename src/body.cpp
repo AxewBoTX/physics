@@ -46,17 +46,17 @@ void Body::handle_input() {
   }
 
   if (IsKeyDown(KEY_D)) {
-    Vector force = Vector(5, 0);
+    Vector force = Vector(10, 0);
     this->apply_force(force);
   } else if (IsKeyDown(KEY_A)) {
-    Vector force = Vector(-5, 0);
+    Vector force = Vector(-10, 0);
     this->apply_force(force);
   }
   if (IsKeyDown(KEY_S)) {
-    Vector force = Vector(0, 5);
+    Vector force = Vector(0, 10);
     this->apply_force(force);
   } else if (IsKeyDown(KEY_W)) {
-    Vector force = Vector(0, -5);
+    Vector force = Vector(0, -10);
     this->apply_force(force);
   }
 }
