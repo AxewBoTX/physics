@@ -3,21 +3,17 @@
 #include <cmath>
 
 // Body Constructor
-Body::Body(double _x, double _y, double _mass, double _angle) {
+Body::Body(double _x, double _y, double _mass, double _life) {
   this->mass = _mass;
   this->location.x = _x;
   this->location.y = _y;
-  this->angle = _angle;
   this->size.x = this->mass * 2;
   this->size.y = this->mass;
+  this->life = _life;
 }
 
 // Updating body state
-void Body::update() {
-  this->handle_force_stacking();
-  this->handle_input();
-  // this->angle = std::atan2(this->vel.y, this->vel.x);
-}
+void Body::update() { this->handle_force_stacking(); }
 
 // Halding multiple forces on body
 void Body::handle_force_stacking() {

@@ -34,8 +34,9 @@ public:
   Vector vel = Vector(0, 0);
   Vector acc = Vector(0, 0);
   double angle;
+  double life;
 
-  Body(double _x, double _y, double _mass, double _angle);
+  Body(double _x, double _y, double _mass, double _life);
   void update();
   void handle_force_stacking();
   void apply_force(Vector &force);
