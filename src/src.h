@@ -54,5 +54,6 @@ public:
 void debug_body(Body &body);
 void DrawRotationalLine(Body &body);
 void DrawRotationalSquare(Body &body);
+void DrawRotationalRectangle(Body &body);
 
 #endif

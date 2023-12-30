@@ -59,3 +59,39 @@ void DrawRotationalSquare(Body &body) {
   // Left
   DrawLine(points[3].x, points[3].y, points[0].x, points[0].y, RAYWHITE);
 }
+
+// Draw Rotational Rectangle
+void DrawRotationalRectangle(Body &body) {
+  Vector points[4];
+  double width = body.mass * 4;
+  double height = body.mass * 2;
+  // Top Left
+  points[0] = Vector(body.location.x - (width / 2) * std::cos(body.angle) -
+                         (height / 2) * std::sin(body.angle),
+                     body.location.y - (width / 2) * std::sin(body.angle) +
+                         (height / 2) * std::cos(body.angle));
+  // Top Right
+  points[1] = Vector(body.location.x + (width / 2) * std::cos(body.angle) -
+                         (height / 2) * std::sin(body.angle),
+                     body.location.y + (width / 2) * std::sin(body.angle) +
+                         (height / 2) * std::cos(body.angle));
+  // Bottom Right
+  points[2] = Vector(body.location.x + (width / 2) * std::cos(body.angle) +
+                         (height / 2) * std::sin(body.angle),
+                     body.location.y + (width / 2) * std::sin(body.angle) -
+                         (height / 2) * std::cos(body.angle));
+  // Bottom Left
+  points[3] = Vector(body.location.x - (width / 2) * std::cos(body.angle) +
+                         (height / 2) * std::sin(body.angle),
+                     body.location.y - (width / 2) * std::sin(body.angle) -
+                         (height / 2) * std::cos(body.angle));
+
+  // Top
+  DrawLine(points[0].x, points[0].y, points[1].x, points[1].y, RAYWHITE);
+  // Right
+  DrawLine(points[1].x, points[1].y, points[2].x, points[2].y, RAYWHITE);
+  // Bottom
+  DrawLine(points[2].x, points[2].y, points[3].x, points[3].y, RAYWHITE);
+  // Left
+  DrawLine(points[3].x, points[3].y, points[0].x, points[0].y, RAYWHITE);
+}
