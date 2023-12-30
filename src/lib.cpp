@@ -30,66 +30,38 @@ void DrawRotationalLine(Body &body) {
   DrawLine(points[1].x, points[1].y, points[0].x, points[0].y, RAYWHITE);
 }
 
-// Drawing rotational square
-void DrawRotationalSquare(Body &body) {
-  Vector points[4];
-  // Top Left
-  points[0] =
-      Vector(body.location.x - body.mass * std::sin(body.angle + M_PI / 4),
-             body.location.y - body.mass * std::cos(body.angle + M_PI / 4));
-  // Top Right
-  points[1] =
-      Vector(body.location.x + body.mass * std::cos(body.angle + M_PI / 4),
-             body.location.y - body.mass * std::sin(body.angle + M_PI / 4));
-  // Bottom Right
-  points[2] =
-      Vector(body.location.x + body.mass * std::sin(body.angle + M_PI / 4),
-             body.location.y + body.mass * std::cos(body.angle + M_PI / 4));
-  // Bottom Right
-  points[3] =
-      Vector(body.location.x - body.mass * std::cos(body.angle + M_PI / 4),
-             body.location.y + body.mass * std::sin(body.angle + M_PI / 4));
-
-  // Top
-  DrawLine(points[0].x, points[0].y, points[1].x, points[1].y, RAYWHITE);
-  // Right
-  DrawLine(points[1].x, points[1].y, points[2].x, points[2].y, RAYWHITE);
-  // Bottom
-  DrawLine(points[2].x, points[2].y, points[3].x, points[3].y, RAYWHITE);
-  // Left
-  DrawLine(points[3].x, points[3].y, points[0].x, points[0].y, RAYWHITE);
-}
-
 // Draw Rotational Rectangle
 void DrawRotationalRectangle(Body &body) {
   Vector points[4];
-  double width = body.mass * 4;
-  double height = body.mass * 2;
   // Top Left
-  points[0] = Vector(body.location.x - (width / 2) * std::cos(body.angle) -
-                         (height / 2) * std::sin(body.angle),
-                     body.location.y - (width / 2) * std::sin(body.angle) +
-                         (height / 2) * std::cos(body.angle));
+  points[0] =
+      Vector(body.location.x - (body.size.x / 2) * std::cos(body.angle) -
+                 (body.size.y / 2) * std::sin(body.angle),
+             body.location.y - (body.size.x / 2) * std::sin(body.angle) +
+                 (body.size.y / 2) * std::cos(body.angle));
   // Top Right
-  points[1] = Vector(body.location.x + (width / 2) * std::cos(body.angle) -
-                         (height / 2) * std::sin(body.angle),
-                     body.location.y + (width / 2) * std::sin(body.angle) +
-                         (height / 2) * std::cos(body.angle));
+  points[1] =
+      Vector(body.location.x + (body.size.x / 2) * std::cos(body.angle) -
+                 (body.size.y / 2) * std::sin(body.angle),
+             body.location.y + (body.size.x / 2) * std::sin(body.angle) +
+                 (body.size.y / 2) * std::cos(body.angle));
   // Bottom Right
-  points[2] = Vector(body.location.x + (width / 2) * std::cos(body.angle) +
-                         (height / 2) * std::sin(body.angle),
-                     body.location.y + (width / 2) * std::sin(body.angle) -
-                         (height / 2) * std::cos(body.angle));
+  points[2] =
+      Vector(body.location.x + (body.size.x / 2) * std::cos(body.angle) +
+                 (body.size.y / 2) * std::sin(body.angle),
+             body.location.y + (body.size.x / 2) * std::sin(body.angle) -
+                 (body.size.y / 2) * std::cos(body.angle));
   // Bottom Left
-  points[3] = Vector(body.location.x - (width / 2) * std::cos(body.angle) +
-                         (height / 2) * std::sin(body.angle),
-                     body.location.y - (width / 2) * std::sin(body.angle) -
-                         (height / 2) * std::cos(body.angle));
+  points[3] =
+      Vector(body.location.x - (body.size.x / 2) * std::cos(body.angle) +
+                 (body.size.y / 2) * std::sin(body.angle),
+             body.location.y - (body.size.x / 2) * std::sin(body.angle) -
+                 (body.size.y / 2) * std::cos(body.angle));
 
   // Top
   DrawLine(points[0].x, points[0].y, points[1].x, points[1].y, RAYWHITE);
   // Right
-  DrawLine(points[1].x, points[1].y, points[2].x, points[2].y, RAYWHITE);
+  DrawLine(points[1].x, points[1].y, points[2].x, points[2].y, RED);
   // Bottom
   DrawLine(points[2].x, points[2].y, points[3].x, points[3].y, RAYWHITE);
   // Left

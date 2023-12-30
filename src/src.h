@@ -30,6 +30,7 @@ class Body {
 public:
   double mass;
   Vector location = Vector(0, 0);
+  Vector size = Vector(0, 0);
   Vector vel = Vector(0, 0);
   Vector acc = Vector(0, 0);
   double angle;
@@ -53,7 +54,6 @@ public:
 // Important functions and raylib addons
 void debug_body(Body &body);
 void DrawRotationalLine(Body &body);
-void DrawRotationalSquare(Body &body);
 void DrawRotationalRectangle(Body &body);
 
 #endif

@@ -23,12 +23,9 @@ int main(void) {
 
     // Actual Code
     for (int i = 0; i < world.bodies.size(); i++) {
-      // DrawCircleLines(world.bodies[i].location.x, world.bodies[i].location.y,
-      //                 world.bodies[i].mass, RAYWHITE);
-      // DrawRotationalLine(world.bodies[i]);
       DrawRotationalRectangle(world.bodies[i]);
       world.bodies[i].update();
-      world.bodies[i].vel_direction();
+      // world.bodies[i].vel_direction();
       debug_body(world.bodies[i]);
     }
     world.generate_friction();

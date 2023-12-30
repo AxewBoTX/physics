@@ -1,6 +1,6 @@
 #include "../lib/raylib/raylib.h"
-#include "math.h"
 #include "src.h"
+#include <cmath>
 
 // Body Constructor
 Body::Body(double _x, double _y, double _mass, double _angle) {
@@ -8,12 +8,15 @@ Body::Body(double _x, double _y, double _mass, double _angle) {
   this->location.x = _x;
   this->location.y = _y;
   this->angle = _angle;
+  this->size.x = this->mass * 2;
+  this->size.y = this->mass;
 }
 
 // Updating body state
 void Body::update() {
   this->handle_force_stacking();
   this->handle_input();
+  // this->angle = std::atan2(this->vel.y, this->vel.x);
 }
 
 // Halding multiple forces on body
@@ -39,10 +42,16 @@ void Body::vel_direction() {
 
 // Handle keyboard input
 void Body::handle_input() {
-  if (IsKeyDown(KEY_SPACE)) {
+  if (IsKeyDown(KEY_H)) {
     this->angle += (M_PI / 180) * 2;
-  } else if (IsKeyDown(KEY_BACKSPACE)) {
+  } else if (IsKeyDown(KEY_L)) {
     this->angle -= (M_PI / 180) * 2;
+  }
+
+  if (IsKeyDown(KEY_SPACE)) {
+    Vector force =
+        Vector(10 * std::cos(this->angle), 10 * std::sin(this->angle));
+    this->apply_force(force);
   }
 
   if (IsKeyDown(KEY_D)) {
