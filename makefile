@@ -1,3 +1,3 @@
 make:
-	g++ -o main ./main.cpp ./src/*.cpp ./lib/libraylib.a
-	./main
+	g++ -o main.a ./main.cpp ./src/*.cpp ./lib/libraylib.a
+	./main.a
