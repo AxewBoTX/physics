@@ -52,9 +52,18 @@ public:
   void generate_friction();
 };
 
+// Perceptron Class
+class Perceptron {
+public:
+  std::vector<double> weights;
+  Perceptron(int n);
+  int feed_forward(std::vector<int> &input);
+};
+
 // Important functions and raylib addons
 void debug_body(Body &body);
 void DrawRotationalLine(Body &body);
 void DrawRotationalRectangle(Body &body);
+int activate_neuron(double sum);
 
 #endif

@@ -67,3 +67,12 @@ void DrawRotationalRectangle(Body &body) {
   // Left
   DrawLine(points[3].x, points[3].y, points[0].x, points[0].y, RAYWHITE);
 }
+
+// Activating a neuron
+int activate_neuron(double sum) {
+  if (sum > 0) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
