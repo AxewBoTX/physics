@@ -1,4 +1,4 @@
-#include "lib/raylib/raylib.h"
+#include "include/raylib.h"
 
 int main(void) {
   // Basic raylib setup

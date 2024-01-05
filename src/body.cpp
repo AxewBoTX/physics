@@ -1,4 +1,4 @@
-#include "../lib/raylib/raylib.h"
+#include "../include/raylib.h"
 #include "src.h"
 #include <cmath>
 
